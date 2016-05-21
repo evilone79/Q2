@@ -6,15 +6,17 @@
 template<typename TDataItem>
 class RandomChooser : public ItemChoiceStrategy<TDataItem>
 {
+private:
+	std::random_device m_rndDev;
 public:
 	std::vector<TDataItem> chooseItems(const std::vector<TDataItem>& data, int numOfItems) override
 	{
 		//init randomizer
-		std::default_random_engine generator;
+		std::mt19937 generator(m_rndDev());
 		std::uniform_int_distribution<int> distribution(0, data.size() - 1);
 
 		std::vector<TDataItem> chosen;
-		if (data.size() > numOfItems)
+		if (numOfItems > data.size())
 			numOfItems = data.size(); //seemed like logical optimization
 		while(numOfItems > 0)
 		{

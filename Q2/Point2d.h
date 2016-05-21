@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ostream>
+
 //well.. a 2d point 
 struct Point2d
 {
@@ -15,3 +17,8 @@ struct Point2d
 	double Y;
 };
 
+std::ostream& operator<< (std::ostream& os, const Point2d& point)
+{
+	os << "{" << point.X << "," << point.Y << "}";
+	return os;
+}
