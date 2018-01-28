@@ -10,23 +10,6 @@
 
 using namespace std;
 
-class Dog
-{
-public:
-	virtual void Bark()
-	{
-		cout << "Dog barks" << endl;
-	}
-};
-
-class RedDog
-{
-public:
-	virtual void Bark()
-	{
-		cout << "RedDog barks" << endl;
-	}
-};
 
 vector<Point2d> readAllLines(const string& fileName)
 {	
@@ -50,11 +33,7 @@ vector<Point2d> readAllLines(const string& fileName)
 int main()
 {
 	auto points = readAllLines("D:\\vs_projects\\Q2\\C2Tester\\bin\\Debug\\points.txt");
-	/*for(auto& p: points)
-	{
-		cout << p.X << "," << p.Y << "\n";
-	}*/
-	/*vector<Point2d> initialData{ {3.0,5.3},{ 3.1,5.0 },{ 2.8,5.6 } };*/
+	
 	RoadFinder roadFinder{100, 10.0, 20};
 		
 	auto model = make_unique<LineModel2D>(make_unique<RandomChooser<Point2d>>());
